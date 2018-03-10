@@ -10,7 +10,7 @@ class FilmRow extends Component {
 
     const { title, date, key, url } = this.props
 
-    const posterUrl = "https://image.tmdb.org/t/p/w780/" + url
+    const posterUrl = "https://image.imdb.org/t/p/w780/" + url
     const year = new Date(date).getFullYear()
 
 
@@ -21,7 +21,9 @@ class FilmRow extends Component {
           <h1>{title}</h1>
           <p>{year}</p>
         </div>
-        <Fave isFave={this.props.isFave} onFaveToggle={this.props.onFaveToggle} />
+        <Fave 
+          isFave={this.props.isFave} 
+          onFaveToggle={this.props.onFaveToggle} />
       </div>
     )
   }

@@ -38,6 +38,14 @@ class App extends Component {
 
   handleDetailsClick = (film) => {
     console.log("Fetching details for" + film.title)
+    const url = `https://api.themoviedb.org/3/movie/${film.id}?api_key=${TMDB.api_key}&append_to_response=videos,images&language=en`
+    fetch(url).then(response => {
+      response.json().then(data => {
+        console.log(data)
+        this.setState({current: data})
+      })
+    })
+
     this.setState({
       current: film
     })
@@ -46,7 +54,11 @@ class App extends Component {
   render() {
     return (
       <div className="film-library">
-        <FilmListing faves={this.state.faves} onDetailsClick={this.handleDetailsClick} onFaveToggle={this.handleFaveToggle} films={this.state.films} />
+        <FilmListing 
+          faves={this.state.faves} 
+          onDetailsClick={this.handleDetailsClick} 
+          onFaveToggle={this.handleFaveToggle} 
+          films={this.state.films} />
         <FilmDetails film={this.state.current} />
       </div>
     );
