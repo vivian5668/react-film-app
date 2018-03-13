@@ -21,6 +21,7 @@ class FilmListing extends Component {
 
     const { faves, films } = this.props
 
+    //these two lines provide CSS class to 'All' / 'Fave'  is_Active
     var  allFilter  = (this.state.filter === 'all' ? 'is active' : '')
     var  favesFilter = (this.state.filter === 'faves' ? 'is active' : '')
 
@@ -32,10 +33,11 @@ class FilmListing extends Component {
           allFilms = films.map((film,index) => {
               return(
                 <FilmRow
-                  onFaveToggle={() => this.props.onFaveToggle(film)}
+                  onFaveToggle={() => this.props.onFaveToggle(film)} //closure, so that in the next level, it still have access to film variable
                   title={film.title}
                   date={film.release_date}
-                  key={film.id} url={film.poster_path}
+                  key={film.id} 
+                  url={film.poster_path}
                   isFave={faves.includes(film)}
                   onDetailsClick={() => this.props.onDetailsClick(film)}
                 />
@@ -48,14 +50,16 @@ class FilmListing extends Component {
                       onFaveToggle={() => this.props.onFaveToggle(film)}
                       title={film.title}
                       date={film.release_date}
-                      key={film.id} url={film.poster_path}
+                      key={film.id} 
+                      url={film.poster_path}
                       isFave={faves.includes(film)}
                       onDetailsClick={() => this.props.onDetailsClick(film)}
                     />
                     )
                 })
     }
-    
+
+
 
     return (
       <div className="film-list">

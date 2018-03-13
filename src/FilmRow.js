@@ -13,6 +13,7 @@ class FilmRow extends Component {
     const posterUrl = "https://image.imdb.org/t/p/w780/" + url
     const year = new Date(date).getFullYear()
 
+//row 19 onDetailsClick goes back to FIlmList, not App, b/c filmList has passed in (film) info throught he mapping
 
     return (
       <div className="film-row" onClick={this.props.onDetailsClick}>

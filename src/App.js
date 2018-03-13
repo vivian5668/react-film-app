@@ -33,7 +33,7 @@ class App extends Component {
       faves.push(film)
       console.log("adding a favorite to fave array", film.title)
     }
-    this.setState({faves}) //this is actually faves:faves
+    this.setState({faves:faves}) //this is actually faves:faves
   }
 
   handleDetailsClick = (film) => {
